@@ -1,6 +1,7 @@
 import p5 from "p5";
 
-type Column = boolean[];
+export type Column = boolean[];
+export type Cell = [number, number];
 
 export class Grid {
     public static CELL_SIZE = 20;
