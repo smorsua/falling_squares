@@ -1,6 +1,6 @@
-import { Fragment } from "./FragmentGrid";
-import { Cell, Column } from "./Grid";
-import { random_int } from "./math";
+import { Fragment } from "../FragmentGrid";
+import { Cell, Column } from "../Grid";
+import { random_int } from "../math";
 
 export class RandomFragment implements Fragment {
     constructor() {}

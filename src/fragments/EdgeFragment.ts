@@ -1,5 +1,5 @@
-import { Fragment } from "./FragmentGrid";
-import { Column, Cell } from "./Grid";
+import { Fragment } from "../FragmentGrid";
+import { Column, Cell } from "../Grid";
 
 export class EdgeFragment implements Fragment {
     constructor() {}

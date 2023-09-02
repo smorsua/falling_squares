@@ -7,19 +7,12 @@ export interface Fragment {
 export class FragmentGrid extends Grid {
     private fragmenter: Fragment;
 
-    constructor(
-        grid_config: {
-            columns: Column[];
-            offset_x: number;
-            offset_y: number;
-        },
-        fragmenter: Fragment
-    ) {
-        super(grid_config.columns, grid_config.offset_x, grid_config.offset_y);
+    constructor(columns: Column[], fragmenter: Fragment) {
+        super(columns);
         this.fragmenter = fragmenter;
     }
 
-    public take_fragment(): Grid {
+    public take_fragment() {
         // const fragment_cells = select_fragment_cells(this.columns);
         const fragment_cells = this.fragmenter.fragment(this.columns);
         this.remove_cells(fragment_cells);
@@ -33,7 +26,7 @@ export class FragmentGrid extends Grid {
     }
 }
 
-function cells_to_grid(cells: Cell[]): Grid {
+function cells_to_grid(cells: Cell[]): [grid: Grid, x: number, y: number] {
     const h_range = cells.reduce(
         (prev_range, curr_cell) => {
             const min =
@@ -73,9 +66,5 @@ function cells_to_grid(cells: Cell[]): Grid {
         }
     }
 
-    return new Grid(
-        columns,
-        h_range[0] * Grid.CELL_SIZE,
-        v_range[0] * Grid.CELL_SIZE
-    );
+    return [new Grid(columns), h_range[0], v_range[0]];
 }
